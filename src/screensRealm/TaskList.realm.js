@@ -1,5 +1,5 @@
 const ProductSchema = {
-    name: "Products",
+    name: "ProductsHome",
     properties: {
       _id: "int",
       /* current_date: "date",

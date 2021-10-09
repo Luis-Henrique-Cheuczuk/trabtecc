@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'react-native';
 import { Container, Inputs } from './styles';
-import { Txt, Button, TxtButton, Txt_input } from '../Login/styles.js';
+import { Txt, Button, TxtButton } from '../Login/styles.js';
 
 import initRealm from '../../store';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -15,12 +15,12 @@ const Home = ({ navigation }) => {
 
   const [products, setProducts] = useState([])
 
-  async function createProduct(realm) {
+  async function createProductHome(realm) {
     let products1 = null
     try {
       await realm.write(() => {
-        products1 = realm.create("Products", {
-          _id: 12,
+        products1 = realm.create("ProductsHome", {
+          _id: 111111,
           /* current_date: 2021-08-10,
           current_time: 18:30:59, */
           name_product: nameproduct,
@@ -37,14 +37,15 @@ const Home = ({ navigation }) => {
   useEffect(async () => {
     const realm = await initRealm()
     if (realm) {
-      const product = realm.objects("Products")
+      const product = realm.objects("ProductsHome")
       setProducts(product)
     }
   }, []);
 
   async function handleSave() {
     const realm = await initRealm()
-    await createProduct(realm)
+    const teste = await createProductHome(realm)
+    console.log(teste)
   }
 
   return (
@@ -54,28 +55,24 @@ const Home = ({ navigation }) => {
         placeholder="Nome do Produto"
         value={nameproduct}
         onChangeText={a => setNameProduct(a)}>
-        nameProduct
         {/* {products.map(item => <Txt_input>{item.name_product}</Txt_input>)} */}
       </Inputs>
       <Inputs
         placeholder="Quantidade do Produto a ser consumida"
         value={quantity}
         onChangeText={q => setQuantity(q)}>
-        Quantity
       </Inputs>
       <Inputs
         keyboardType="numeric"
         placeholder="Peso atual"
         value={weight}
         onChangeText={w => setWeight(w)}>
-        Weight
       </Inputs>
       <Inputs
         keyboardType="numeric"
         placeholder="Total Fenilalanina"
         value={phenylalanine}
         onChangeText={p => setPhenylalanine(p)}>
-        Phenylalanine
       </Inputs>
       <Button onPress={() => navigation.navigate('CadastrarProduto')}>
         <TxtButton>Home Screen -{'>'} CadastrarProduto Screen</TxtButton>
