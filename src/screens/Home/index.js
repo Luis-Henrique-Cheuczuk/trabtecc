@@ -53,29 +53,29 @@ const Home = ({ navigation }) => {
       <Inputs
         placeholder="Nome do Produto"
         value={nameproduct}
-        onChangeText={nameproduct => setNameProduct(nameproduct)}>
-        nameproduct
+        onChangeText={a => setNameProduct(a)}>
+        nameProduct
         {/* {products.map(item => <Txt_input>{item.name_product}</Txt_input>)} */}
       </Inputs>
       <Inputs
         placeholder="Quantidade do Produto a ser consumida"
         value={quantity}
-        onChangeText={quantity => setQuantity(quantity)}>
-        {/* {products.map(item => <Txt_input>{item.quantity_product}</Txt_input>)} */}
+        onChangeText={q => setQuantity(q)}>
+        Quantity
       </Inputs>
       <Inputs
         keyboardType="numeric"
         placeholder="Peso atual"
         value={weight}
-        onChangeText={weight => setWeight(weight)}>
-       {/*  {products.map(item => <Txt_input>{item.weight_total}</Txt_input>)} */}
+        onChangeText={w => setWeight(w)}>
+        Weight
       </Inputs>
       <Inputs
         keyboardType="numeric"
         placeholder="Total Fenilalanina"
         value={phenylalanine}
-        onChangeText={phenylalanine => setPhenylalanine(phenylalanine)}>
-        {/* {products.map(item => <Txt_input>{item.phenylalanine_total}</Txt_input>)} */}
+        onChangeText={p => setPhenylalanine(p)}>
+        Phenylalanine
       </Inputs>
       <Button onPress={() => navigation.navigate('CadastrarProduto')}>
         <TxtButton>Home Screen -{'>'} CadastrarProduto Screen</TxtButton>
