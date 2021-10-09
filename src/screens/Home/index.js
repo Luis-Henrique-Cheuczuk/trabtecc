@@ -23,10 +23,10 @@ const Home = ({ navigation }) => {
           _id: 12,
           /* current_date: 2021-08-10,
           current_time: 18:30:59, */
-          name_product: "nameproduct",
-          quantity_product: "quantity",
-          weight_total: "weight",
-          phenylalanine_total: "phenylalanine"
+          name_product: nameproduct,
+          quantity_product: quantity,
+          weight_total: weight,
+          phenylalanine_total: phenylalanine
         });
       });
     } catch (e) {
@@ -37,55 +37,52 @@ const Home = ({ navigation }) => {
   useEffect(async () => {
     const realm = await initRealm()
     if (realm) {
-      await createProduct(realm)
       const product = realm.objects("Products")
       setProducts(product)
     }
   }, []);
 
-/*   async function save(realm) {
-    const realm = createProduct()
-    return (
-      console.log(nameproduct, weight, quantity, phenylalanine)
-    )
-  } */
+  async function handleSave() {
+    const realm = await initRealm()
+    return await createProduct(realm)
+  }
 
   return (
     <Container>
       <Txt>Tela da Home</Txt>
       <Inputs
         placeholder="Nome do Produto"
-        /* value={nameproduct}
-        onChangeText={nameproduct => setNameProduct(nameproduct)} */>
-        {/* <Txt_input>nameproduct</Txt_input> */}
-        {products.map(item => <Txt_input>{item.name_product}</Txt_input>)}
+        value={nameproduct}
+        onChangeText={nameproduct => setNameProduct(nameproduct)}>
+        <Txt_input>nameproduct</Txt_input>
+        {/* {products.map(item => <Txt_input>{item.name_product}</Txt_input>)} */}
       </Inputs>
       <Inputs
         placeholder="Quantidade do Produto a ser consumida"
-        /* value={quantity}
-        onChangeText={quantity => setQuantity(quantity)} */>
-        {products.map(item => <Txt_input>{item.quantity_product}</Txt_input>)}
+        value={quantity}
+        onChangeText={quantity => setQuantity(quantity)}>
+        {/* {products.map(item => <Txt_input>{item.quantity_product}</Txt_input>)} */}
       </Inputs>
       <Inputs
         keyboardType="numeric"
         placeholder="Peso atual"
-        /* value={weight}
-        onChangeText={weight => setWeight(weight)} */>
-        {products.map(item => <Txt_input>{item.weight_total}</Txt_input>)}
+        value={weight}
+        onChangeText={weight => setWeight(weight)}>
+       {/*  {products.map(item => <Txt_input>{item.weight_total}</Txt_input>)} */}
       </Inputs>
       <Inputs
         keyboardType="numeric"
         placeholder="Total Fenilalanina"
-        /* value={phenylalanine}
-        onChangeText={phenylalanine => setPhenylalanine(phenylalanine)} */>
-        {products.map(item => <Txt_input>{item.phenylalanine_total}</Txt_input>)}
+        value={phenylalanine}
+        onChangeText={phenylalanine => setPhenylalanine(phenylalanine)}>
+        {/* {products.map(item => <Txt_input>{item.phenylalanine_total}</Txt_input>)} */}
       </Inputs>
       <Button onPress={() => navigation.navigate('CadastrarProduto')}>
         <TxtButton>Home Screen -{'>'} CadastrarProduto Screen</TxtButton>
       </Button>
-{/*       <TouchableOpacity>
+      <TouchableOpacity onPress={handleSave()}>
         <TxtButton>Salvar</TxtButton>
-      </TouchableOpacity> */}
+      </TouchableOpacity>
       {/* <Inputs
         keyboardType="numeric"
         placeholder="Data atual">
