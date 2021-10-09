@@ -44,7 +44,7 @@ const Home = ({ navigation }) => {
 
   async function handleSave() {
     const realm = await initRealm()
-    return await createProduct(realm)
+    await createProduct(realm)
   }
 
   return (
@@ -54,7 +54,7 @@ const Home = ({ navigation }) => {
         placeholder="Nome do Produto"
         value={nameproduct}
         onChangeText={nameproduct => setNameProduct(nameproduct)}>
-        <Txt_input>nameproduct</Txt_input>
+        nameproduct
         {/* {products.map(item => <Txt_input>{item.name_product}</Txt_input>)} */}
       </Inputs>
       <Inputs
@@ -80,7 +80,7 @@ const Home = ({ navigation }) => {
       <Button onPress={() => navigation.navigate('CadastrarProduto')}>
         <TxtButton>Home Screen -{'>'} CadastrarProduto Screen</TxtButton>
       </Button>
-      <TouchableOpacity onPress={handleSave()}>
+      <TouchableOpacity onPress={() => handleSave()}>
         <TxtButton>Salvar</TxtButton>
       </TouchableOpacity>
       {/* <Inputs
