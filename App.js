@@ -5,8 +5,6 @@ import Realm from "realm";
 
 export default function App() {
 
-
-
   return (
     <NavigationContainer>
       <RootNavigation />  

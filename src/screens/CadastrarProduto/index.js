@@ -1,53 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import { StatusBar } from 'react-native';
-import { Container, Inputs } from './styles';
-import { Txt, Button, TxtButton } from '../Login/styles.js';
+import React, { useEffect, useState } from 'react';
+import { StatusBar, TouchableOpacity } from 'react-native';
+import { Container, Inputs, Txt, Button, TxtButton } from '../Login/styles';
 
-import initRealm from '../../store';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-
+/* import Realm from "realm";
+import ProductSchema from "./TaskList.realm";
+ */
 const CadastrarProduto = ({ navigation }) => {
 
-  const [nameproduct, setNameProduct] = useState("")
+  const [namesproduct, setNameProduct] = useState("")
   const [manufacturer, setManufacturer] = useState("")
   const [unity, setUnity] = useState("")
   const [quantityprotein, setQuantityProtein] = useState("")
-  const [phenylalanine, setPhenylalanine] = useState("")
+  const [tphenylalanine, setPhenylalanine] = useState("")
 
   const [products, setProducts] = useState([])
 
   async function createProduct(realm) {
-    let products1 = null
+    let createproduct1 = null
     try {
       await realm.write(() => {
-        products1 = realm.create("Products", {
+        createproduct1 = realm.create("Products", {
           _id: 111111,
           /* current_date: 2021-08-10,
           current_time: 18:30:59, */
-          name_product: nameproduct,
+          names_product: namesproduct,
           manufacturer_product: manufacturer,
           unity_product: unity,
           protein_total: quantityprotein,
-          phenylalanine_total: phenylalanine
+          phenylalanine_totals: tphenylalanine
         });
       });
     } catch (e) {
       console.log(e)
     }
-  }
-
-  useEffect(async () => {
-    const realm = await initRealm()
-    if (realm) {
-      const product = realm.objects("Products")
-      setProducts(product)
-    }
-  }, []);
-
-  async function handleSave() {
-    const realm = await initRealm()
-    const teste = await createProduct(realm)
-    console.log(teste)
   }
 
   return (
@@ -57,7 +42,7 @@ const CadastrarProduto = ({ navigation }) => {
       <Txt>Cadastro de produto</Txt>
       <Inputs
         placeholder="Nome do Produto"
-        value={nameproduct}
+        value={namesproduct}
         onChangeText={a => setNameProduct(a)}>
       </Inputs>
       <Inputs
@@ -77,7 +62,7 @@ const CadastrarProduto = ({ navigation }) => {
       </Inputs>
       <Inputs
         placeholder="Quantidade Total de Fenilalanina"
-        value={phenylalanine}
+        value={tphenylalanine}
         onChangeText={p => setPhenylalanine(p)}>
       </Inputs>
       <Button onPress={() => navigation.navigate('Home')}>
@@ -92,5 +77,6 @@ const CadastrarProduto = ({ navigation }) => {
   )
 
 }
+
 
 export default CadastrarProduto;

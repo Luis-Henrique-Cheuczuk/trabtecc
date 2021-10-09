@@ -2,11 +2,11 @@ const CreateProductSchema = {
     name: "Products",
     properties: {
       _id: "int",
-      name_product: "string",
+      names_product: "string",
       manufacturer_product: "string",
       unity_product: "string",
-      protein_total: "float",
-      phenylalanine_total : "float"
+      protein_total: "string",
+      phenylalanine_totals: "string"
     },
     primaryKey: "_id",
 };

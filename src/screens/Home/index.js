@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar, TouchableOpacity } from 'react-native';
 import { Container, Inputs } from './styles';
 import { Txt, Button, TxtButton } from '../Login/styles.js';
 
 import initRealm from '../../store';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Home = ({ navigation }) => {
 
@@ -13,7 +12,7 @@ const Home = ({ navigation }) => {
   const [quantity, setQuantity] = useState("")
   const [phenylalanine, setPhenylalanine] = useState("")
 
-  const [products, setProducts] = useState([])
+  const [products, setProductsHome] = useState([])
 
   async function createProductHome(realm) {
     let products1 = null
@@ -38,7 +37,7 @@ const Home = ({ navigation }) => {
     const realm = await initRealm()
     if (realm) {
       const product = realm.objects("ProductsHome")
-      setProducts(product)
+      setProductsHome(product)
     }
   }, []);
 
