@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { StatusBar, TouchableOpacity } from 'react-native';
-import { Container, Inputs, Risco, Txt_input } from './styles';
-import { Txt, Button, TxtButton } from '../Login/styles.js';
+import { StatusBar } from 'react-native';
+import { Container, Inputs, Risco } from './styles';
+import { Txt, Button, TxtButton, Txt_input } from '../Login/styles.js';
 
 import initRealm from '../../store';
 
@@ -28,7 +28,7 @@ const Home = ({ navigation }) => {
     try {
       await realm.write(() => {
         products1 = realm.create("ProductsHome", {
-          _id: 5,
+          _id: 1,
           /* current_date: 2021-08-10,
           current_time: 18:30:59, */
           name_product: nameproduct,
@@ -76,12 +76,24 @@ const Home = ({ navigation }) => {
         onChangeText={p => setPhenylalanine(p)}>
       </Inputs>
       <Button onPress={() => navigation.navigate('CadastrarProduto')}>
-        <TxtButton>Home Screen -{'>'} CadastrarProduto Screen</TxtButton>
+        <TxtButton> Cadastrar Produto </TxtButton>
       </Button>
-      <TouchableOpacity onPress={() => handleSave()}>
+      <Button onPress={() => handleSave()}>
         <TxtButton>Salvar</TxtButton>
-      </TouchableOpacity>
+      </Button>
       <Risco />
+        <Txt_input>
+          Nome do Produto: {products.map(item => <Txt_input>{item.name_product}</Txt_input>)} 
+        </Txt_input>
+        <Txt_input>
+          Quantidade do Produto: {products.map(item => <Txt_input>{item.quantity_product}</Txt_input>)} 
+        </Txt_input>
+        <Txt_input>
+          Peso atual: {products.map(item => <Txt_input>{item.weight_total}</Txt_input>)} 
+        </Txt_input>
+        <Txt_input>
+          Felilananila total: {products.map(item => <Txt_input>{item.phenylalanine_total}</Txt_input>)} 
+        </Txt_input>
       {/* <Inputs
         keyboardType="numeric"
         placeholder="Data atual">

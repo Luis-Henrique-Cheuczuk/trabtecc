@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { StatusBar, TouchableOpacity } from 'react-native';
+import { StatusBar } from 'react-native';
 import { Container, Txt, Button, TxtButton } from '../Login/styles';
 import { Inputs } from '../Home/styles'
 
+import initRealm from '../../store';
 /* import Realm from "realm";
 import ProductSchema from "./TaskList.realm";
  */
@@ -31,6 +32,7 @@ const CadastrarProduto = ({ navigation }) => {
           phenylalanine_totals: tphenylalanine
         });
       });
+      console.log("---------------------- dados createproduct1 ---------------------------\n", createproduct1)
     } catch (e) {
       console.log(e)
     }
@@ -70,7 +72,7 @@ const CadastrarProduto = ({ navigation }) => {
         onChangeText={u => setUnity(u)}>
       </Inputs>
       <Inputs
-        placeholder="Qauntidade de Proteína por porção"
+        placeholder="Quantidade de Proteína por porção"
         value={quantityprotein}
         onChangeText={q => setQuantityProtein(q)}>
       </Inputs>
@@ -80,11 +82,11 @@ const CadastrarProduto = ({ navigation }) => {
         onChangeText={p => setPhenylalanine(p)}>
       </Inputs>
       <Button onPress={() => navigation.navigate('Home')}>
-        <TxtButton>CadastrarProduto Screen -{'>'} Home Screen</TxtButton>
+        <TxtButton> Home </TxtButton>
       </Button>
-      <TouchableOpacity onPress={() => handleSave()}>
+      <Button onPress={() => handleSave()}>
         <TxtButton>Salvar</TxtButton>
-      </TouchableOpacity>
+      </Button>
       <StatusBar marginTop={'auto'}></StatusBar>
     </Container>
 
