@@ -28,7 +28,7 @@ const Home = ({ navigation }) => {
     try {
       await realm.write(() => {
         products1 = realm.create("ProductsHome", {
-          _id: 4,
+          _id: 5,
           /* current_date: 2021-08-10,
           current_time: 18:30:59, */
           name_product: nameproduct,
