@@ -8,7 +8,7 @@ import initRealm from '../../store';
 const Home = ({ navigation }) => {
 
   const [nameproduct, setNameProduct] = useState("")
-  const [weight, setWeight] = useState("")
+  const [quantityprotein, setQuantityProtein] = useState("")
   const [quantity, setQuantity] = useState("")
   const [phenylalanine, setPhenylalanine] = useState("")
 
@@ -32,10 +32,11 @@ const Home = ({ navigation }) => {
           /* current_date: 2021-08-10,
           current_time: 18:30:59, */
           name_product: nameproduct,
-          quantity_product: quantity,
-          weight_total: weight,
-          phenylalanine_total: phenylalanine
+          quantity_product: parseFloat(quantity),
+          protein_total: parseFloat(quantityprotein),
+          phenylalanine_total: parseFloat(phenylalanine * 0.05)
         });
+        console.log("Nameproduct", products1.nameproduct)
       });
       console.log("---------------------- dados products1 ---------------------------\n", products1)
     } catch (e) {
@@ -49,6 +50,7 @@ const Home = ({ navigation }) => {
     await createProductHome(realm)
   }
 
+
   return (
     <Container>
       <Txt>Tela da Home</Txt>
@@ -59,19 +61,21 @@ const Home = ({ navigation }) => {
         {/* {products.map(item => <Txt_input>{item.name_product}</Txt_input>)} */}
       </Inputs>
       <Inputs
+      keyboardType="numeric"
         placeholder="Quantidade do Produto a ser consumida"
         value={quantity}
         onChangeText={q => setQuantity(q)}>
       </Inputs>
       <Inputs
         keyboardType="numeric"
-        placeholder="Peso atual"
-        value={weight}
-        onChangeText={w => setWeight(w)}>
+        placeholder="Proteina"
+        value={quantityprotein}
+        onChangeText={w => setQuantityProtein(w)}>
       </Inputs>
       <Inputs
         keyboardType="numeric"
         placeholder="Total Fenilalanina"
+        editable = {false}
         value={phenylalanine}
         onChangeText={p => setPhenylalanine(p)}>
       </Inputs>
@@ -89,31 +93,11 @@ const Home = ({ navigation }) => {
           Quantidade do Produto: {products.map(item => <Txt_input>{item.quantity_product}</Txt_input>)} 
         </Txt_input>
         <Txt_input>
-          Peso atual: {products.map(item => <Txt_input>{item.weight_total}</Txt_input>)} 
+          Proteina: {products.map(item => <Txt_input>{item.protein_total}</Txt_input>)} 
         </Txt_input>
         <Txt_input>
-          Felilananila total: {products.map(item => <Txt_input>{item.phenylalanine_total}</Txt_input>)} 
+          Fenilalanina total: {products.map(item => <Txt_input>{item.phenylalanine_total}</Txt_input>)} 
         </Txt_input>
-      {/* <Inputs
-        keyboardType="numeric"
-        placeholder="Data atual">
-      </Inputs>
-      <Inputs
-        keyboardType="numeric"
-        placeholder="Hora atual">
-      </Inputs> */}
-      {/* <Button onPress={() => navigation.navigate('Registro')}>
-            <TxtButton>Home Screen -{'>'} Registro Screen</TxtButton>
-          </Button> */}
-      {/* <Button onPress={() => navigation.navigate('Historico')}>
-          <TxtButton>Home Screen -{'>'} Historico Screen</TxtButton>
-        </Button>
-        <Button onPress={() => navigation.navigate('InfoApp')}>
-          <TxtButton>Home Screen -{'>'} InfoApp Screen</TxtButton>
-        </Button>
-        <Button onPress={() => navigation.navigate('Login')}>
-          <TxtButton>Home Screen -{'>'} Login Screen (Sair)</TxtButton>
-        </Button> */}
       <StatusBar marginTop={'auto'}></StatusBar>
     </Container>
   )

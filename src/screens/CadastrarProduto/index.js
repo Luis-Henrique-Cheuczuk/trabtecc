@@ -22,14 +22,14 @@ const CadastrarProduto = ({ navigation }) => {
     try {
       await realm.write(() => {
         createproduct1 = realm.create("Products", {
-          _id: 111111,
+          _id: 44,
           /* current_date: 2021-08-10,
           current_time: 18:30:59, */
           names_product: namesproduct,
           manufacturer_product: manufacturer,
-          unity_product: unity,
-          protein_total: quantityprotein,
-          phenylalanine_totals: tphenylalanine
+          unity_product: parseFloat(unity),
+          protein_total: parseFloat(quantityprotein),
+          phenylalanine_totals: parseFloat(quantityprotein * 0.05)
         });
       });
       console.log("---------------------- dados createproduct1 ---------------------------\n", createproduct1)
@@ -67,19 +67,22 @@ const CadastrarProduto = ({ navigation }) => {
         onChangeText={m => setManufacturer(m)}>
       </Inputs>
       <Inputs
+      keyboardType="numeric"
         placeholder="Unidade do Produto"
         value={unity}
         onChangeText={u => setUnity(u)}>
       </Inputs>
       <Inputs
+      keyboardType="numeric"
         placeholder="Quantidade de Proteína por porção"
         value={quantityprotein}
         onChangeText={q => setQuantityProtein(q)}>
       </Inputs>
       <Inputs
+      keyboardType="numeric"
         placeholder="Quantidade Total de Fenilalanina"
         value={tphenylalanine}
-        onChangeText={p => setPhenylalanine(p)}>
+        >
       </Inputs>
       <Button onPress={() => navigation.navigate('Home')}>
         <TxtButton> Home </TxtButton>

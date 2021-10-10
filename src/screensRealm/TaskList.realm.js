@@ -5,9 +5,9 @@ const ProductSchema = {
       /* current_date: "date",
       current_time: "", */
       name_product: "string",
-      quantity_product: "string",
-      weight_total: "string",
-      phenylalanine_total : "string"
+      quantity_product: "double",
+      protein_total: "double",
+      phenylalanine_total : "double"
     },
     primaryKey: "_id",
 };
