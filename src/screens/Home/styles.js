@@ -24,3 +24,10 @@ export const Inputs = styled.TextInput`
     align-items: center;
     justify-content: center; 
 `;
+
+export const Risco = styled.View`
+    width: 100%;
+    margin: 10px 0px;
+    border: 1px;
+    border-color: #000;
+`;

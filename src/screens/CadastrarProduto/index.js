@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { StatusBar, TouchableOpacity } from 'react-native';
-import { Container, Inputs, Txt, Button, TxtButton } from '../Login/styles';
+import { Container, Txt, Button, TxtButton } from '../Login/styles';
+import { Inputs } from '../Home/styles'
 
 /* import Realm from "realm";
 import ProductSchema from "./TaskList.realm";
@@ -33,6 +34,19 @@ const CadastrarProduto = ({ navigation }) => {
     } catch (e) {
       console.log(e)
     }
+  }
+
+  useEffect(async () => {
+    const realm = await initRealm()
+    if (realm) {
+      const product = realm.objects("Products")
+      setProducts(product)
+    }
+  }, []);
+
+  async function handleSave() {
+    const realm = await initRealm()
+    await createProduct(realm)
   }
 
   return (

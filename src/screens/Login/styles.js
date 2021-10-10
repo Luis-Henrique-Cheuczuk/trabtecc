@@ -31,7 +31,7 @@ export const TxtButton = styled.Text`
   align-items: center; 
 `;
 
-export const Input = styled.TextInput`
+export const Inputs = styled.TextInput`
   height: 45px;
   width: 320px;
   background-color: #000;

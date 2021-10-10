@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StatusBar, TouchableOpacity } from 'react-native';
-import { Container, Inputs } from './styles';
+import { Container, Inputs, Risco, Txt_input } from './styles';
 import { Txt, Button, TxtButton } from '../Login/styles.js';
 
 import initRealm from '../../store';
@@ -14,24 +14,6 @@ const Home = ({ navigation }) => {
 
   const [products, setProductsHome] = useState([])
 
-  async function createProductHome(realm) {
-    let products1 = null
-    try {
-      await realm.write(() => {
-        products1 = realm.create("ProductsHome", {
-          _id: 111111,
-          /* current_date: 2021-08-10,
-          current_time: 18:30:59, */
-          name_product: nameproduct,
-          quantity_product: quantity,
-          weight_total: weight,
-          phenylalanine_total: phenylalanine
-        });
-      });
-    } catch (e) {
-      console.log(e)
-    }
-  }
 
   useEffect(async () => {
     const realm = await initRealm()
@@ -41,10 +23,30 @@ const Home = ({ navigation }) => {
     }
   }, []);
 
+  async function createProductHome(realm) {
+    let products1 = null
+    try {
+      await realm.write(() => {
+        products1 = realm.create("ProductsHome", {
+          _id: 4,
+          /* current_date: 2021-08-10,
+          current_time: 18:30:59, */
+          name_product: nameproduct,
+          quantity_product: quantity,
+          weight_total: weight,
+          phenylalanine_total: phenylalanine
+        });
+      });
+      console.log("---------------------- dados products1 ---------------------------\n", products1)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+  //console.log("---------------------- dados da tela ---------------------------", createProductHome())
+
   async function handleSave() {
     const realm = await initRealm()
-    const teste = await createProductHome(realm)
-    console.log(teste)
+    await createProductHome(realm)
   }
 
   return (
@@ -79,6 +81,7 @@ const Home = ({ navigation }) => {
       <TouchableOpacity onPress={() => handleSave()}>
         <TxtButton>Salvar</TxtButton>
       </TouchableOpacity>
+      <Risco />
       {/* <Inputs
         keyboardType="numeric"
         placeholder="Data atual">
