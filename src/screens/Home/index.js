@@ -28,13 +28,13 @@ const Home = ({ navigation }) => {
     try {
       await realm.write(() => {
         products1 = realm.create("ProductsHome", {
-          _id: 1,
+          _id: 2,
           /* current_date: 2021-08-10,
           current_time: 18:30:59, */
           name_product: nameproduct,
           quantity_product: parseFloat(quantity),
           protein_total: parseFloat(quantityprotein),
-          phenylalanine_total: parseFloat(phenylalanine * 0.05)
+          phenylalanine_total: parseFloat(quantityprotein * 0.05)
         });
         console.log("Nameproduct", products1.nameproduct)
       });

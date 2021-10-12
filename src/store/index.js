@@ -1,5 +1,5 @@
 import Realm from "realm";
-import ProductSchema from "../screensRealm/TaskList.realm";
+import ProductSchema from "../screensRealm/ProductHome";
 import CreateProductSchema from "../screensRealm/CreateProduct"
 
 async function initRealm() {
