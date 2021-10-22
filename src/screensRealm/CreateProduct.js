@@ -1,14 +1,14 @@
-const CreateProductSchema = {
+const ConsumeSchema = {
     name: "Products",
     properties: {
-      _id: "int",
-      names_product: "string",
-      manufacturer_product: "string",
-      unity_product: "double",
-      protein_total: "double",
-      phenylalanine_totals: "double"
+      _id: "string",
+      name: "string",
+      brand: "string",
+      serving_size: "double",
+      protein: "double",
+      pku_consumed: "double"
     },
     primaryKey: "_id",
 };
 
-export default CreateProductSchema;
+export default ConsumeSchema;

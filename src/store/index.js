@@ -1,13 +1,12 @@
 import Realm from "realm";
-import ProductSchema from "../screensRealm/ProductHome";
-import CreateProductSchema from "../screensRealm/CreateProduct"
+import ProductSchema from "../screensRealm/Consume";
+import ConsumeSchema from "../screensRealm/CreateProduct";
 
 async function initRealm() {
     return await Realm.open({
         path: "myrealm",
-        schema: [ProductSchema, CreateProductSchema]
+        schema: [ProductSchema, ConsumeSchema]
     });
-    /* Realm.close() */
 }
 
 export default initRealm ;
